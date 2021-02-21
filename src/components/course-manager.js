@@ -3,6 +3,7 @@ import CourseTable from './course-table';
 import CourseGrid from "./course-grid";
 import CourseEditor from "./course-editor";
 import {Route} from "react-router-dom";
+import courseService from "../services/course-service";
 
 export default class CourseManager extends React.Component {
 
@@ -14,16 +15,30 @@ export default class CourseManager extends React.Component {
         }]
     }
 
+    componentDidMount = () => courseService.findAllCourses().then(courses => {
+        this.setState({courses})
+        console.log(courses)
+    })
+
     addCourse = () => {
-        const newCourse = {title:'OMG4', ownedBy:'RW', lastModified:'2021/02/20'};
-        this.state.courses.push(newCourse);
-        this.setState(this.state.courses);
+        const newCourse = {title:'OMG4', ownedBy:'RW', lastModified:'2021/02/20'}
+        courseService.createCourse(newCourse).then(course =>
+            this.setState((prevState) => ({
+                ...prevState,
+                courses: [
+                    course,
+                    ...prevState.courses
+                ]
+            }))
+        )
     }
 
-    deleteCourse = (deletedCourse) => {
-        let newCourses = this.state.courses.filter(course => course !== deletedCourse)
-        this.setState({courses:newCourses})
-    }
+    deleteCourse = (deletedCourse) => courseService.deleteCourse(deletedCourse._id).then(status =>
+        this.setState((prevState) => ({
+            ...prevState,
+            courses: prevState.courses.filter(course => course !== deletedCourse)
+        })
+    ))
 
     render() {
         return (
