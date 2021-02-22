@@ -8,7 +8,8 @@ import courseService from "../services/course-service";
 export default class CourseManager extends React.Component {
 
     state = {
-        courses: []
+        courses: [],
+        inputCourseTitle: "",
     }
 
     componentDidMount = () => courseService.findAllCourses().then(courses => {
@@ -16,7 +17,7 @@ export default class CourseManager extends React.Component {
     })
 
     addCourse = () => {
-        const newCourse = {title:'New Course', ownedBy:'RW', lastModified:'2021/02/20'}
+        const newCourse = {title: this.state.inputCourseTitle, ownedBy: 'RW', lastModified: '2021/02/20'}
         courseService.createCourse(newCourse).then(course =>
             this.setState((prevState) => ({
                 ...prevState,
@@ -57,7 +58,8 @@ export default class CourseManager extends React.Component {
                         <h1>Course Manager</h1>
                     </div>
                     <div className = 'col-lg-5'>
-                        <input className = 'form-control' />
+                        <input onChange = {event => this.setState({inputCourseTitle:event.target.value})}
+                               className = 'form-control' />
                     </div>
                     <div className='col-lg-1'>
                         <i onClick = {() => this.addCourse()} className = 'fas fa-3x fa-plus-circle'></i>
