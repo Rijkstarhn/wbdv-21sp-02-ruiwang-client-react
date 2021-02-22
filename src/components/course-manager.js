@@ -41,13 +41,26 @@ export default class CourseManager extends React.Component {
         })
     ))
 
+    updateCourse = (course) => courseService.updateCourse(course._id, course).then(status => this.setState(
+        (prevState) => ({
+            ...prevState,
+            courses: prevState.courses.map(oldCourse => {
+                if (oldCourse._id === course._id) {
+                    return course
+                } else {
+                    return oldCourse
+                }
+            })
+        })
+    ))
+
     render() {
         return (
             <div className='container-fluid'>
             <h1>Course Manager</h1>
             <button onClick = {this.addCourse}>Oh</button>
             <Route path='/courses/table'>
-                <CourseTable deleteCourse = {this.deleteCourse}  courses={this.state.courses}/>
+                <CourseTable deleteCourse = {this.deleteCourse} updateCourse = {this.updateCourse}  courses={this.state.courses}/>
             </Route>
             <Route path='/courses/grid'>
                 <CourseGrid deleteCourse = {this.deleteCourse} courses={this.state.courses}/>
