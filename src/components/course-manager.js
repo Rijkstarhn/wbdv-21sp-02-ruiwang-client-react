@@ -44,13 +44,9 @@ export default class CourseManager extends React.Component {
     updateCourse = (course) => courseService.updateCourse(course._id, course).then(status => this.setState(
         (prevState) => ({
             ...prevState,
-            courses: prevState.courses.map(oldCourse => {
-                if (oldCourse._id === course._id) {
-                    return course
-                } else {
-                    return oldCourse
-                }
-            })
+            courses: prevState.courses.map(oldCourse =>
+                oldCourse._id === course._id ? course : oldCourse
+            )
         })
     ))
 
