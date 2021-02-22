@@ -36,3 +36,16 @@ code {
   padding-top: 15px;
   padding-bottom: 15px;
 }
+
+.courseManagerLeftMargin {
+  margin-left: 150px;
+}
+
+.courseManagerInputStyle {
+  margin-left: 550px;
+  width: 300px;
+}
+
+.plusIconStyle {
+  margin-left: 100px;
+}
