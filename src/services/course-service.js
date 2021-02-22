@@ -1,4 +1,4 @@
-const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses";
+const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/ruiwang1991/courses";
 
 export const findAllCourses = () =>
     fetch(COURSES_URL).then(res => res.json())

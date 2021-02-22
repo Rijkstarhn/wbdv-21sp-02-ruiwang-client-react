@@ -8,11 +8,12 @@ import courseService from "../services/course-service";
 export default class CourseManager extends React.Component {
 
     state = {
-        courses: [{
-            title:'OMG', ownedBy:'RW', lastModified:'2021/02/20'
-        },{
-            title:'OMG3', ownedBy:'RW', lastModified:'2021/02/20'
-        }]
+        courses: []
+        // courses: [{
+        //     title:'OMG', ownedBy:'RW', lastModified:'2021/02/20'
+        // },{
+        //     title:'OMG3', ownedBy:'RW', lastModified:'2021/02/20'
+        // }]
     }
 
     componentDidMount = () => courseService.findAllCourses().then(courses => {
