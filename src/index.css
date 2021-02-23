@@ -69,3 +69,13 @@ code {
 .blackColor {
   color: black;
 }
+
+.my-plus-stuck-at-bottom-right {
+
+  position: fixed;
+
+  right: 15px;
+
+  bottom: 15px;
+
+}

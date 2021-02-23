@@ -6,10 +6,11 @@ const CourseEditor = ({history}) =>
         <div className="container">
             <div className="row col-sm-12  bg-secondary">
                 <div className="col-form-label col-sm-4">
-                    <Link to = '/courses/table'>
+                    <Link to = '/courses/'>
                         <i className="navDivMargin fas fa-arrow-left text-white"></i>
                     </Link>
-
+                    <i onClick={() => history.goBack()}
+                       className="navDivMargin fas fa-times text-white"></i>
                     <a className=" navbar-brand mb-0 h1 text-white" href="#">CS5610 - Webdev</a>
                 </div>
                 <div className="col-form-label col-sm-8">

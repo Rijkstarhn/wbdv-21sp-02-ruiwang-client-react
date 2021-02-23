@@ -65,23 +65,6 @@ export default class CourseManager extends React.Component {
                         <i onClick = {() => this.addCourse()} className = 'redColor plusIconMargin fas fa-3x fa-plus-circle'></i>
                     </form>
                 </nav>
-
-                {/*<div className = 'row'>*/}
-                {/*    <div className ='col-lg-1'>*/}
-                {/*        <i className='fas fa-2x fa-bars'></i>*/}
-                {/*    </div>*/}
-                {/*    <div className = 'col-lg-5 visible-lg'>*/}
-                {/*        <h1>Course Manager</h1>*/}
-                {/*    </div>*/}
-                {/*    <div className = 'col-lg-5'>*/}
-                {/*        <input onChange = {event => this.setState({inputCourseTitle:event.target.value})}*/}
-                {/*               className = 'form-control' />*/}
-                {/*    </div>*/}
-                {/*    <div className='col-lg-1'>*/}
-                {/*        <i onClick = {() => this.addCourse()} className = 'fas fa-3x fa-plus-circle'></i>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-            {/*<button onClick = {this.addCourse}>Oh</button>*/}
             <Route path='/courses/table'>
                 <CourseTable deleteCourse = {this.deleteCourse}
                              updateCourse = {this.updateCourse}

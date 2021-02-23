@@ -48,7 +48,8 @@ export default class CourseTable extends React.Component {
             </table>
                 <div className='row'>
                     <div className = 'col'>
-                        <i onClick = {() => this.props.addCourse()} className = 'redColor fas fa-3x fa-plus-circle float-right'></i>
+                        <i onClick = {() => this.props.addCourse()}
+                           className = 'redColor my-plus-stuck-at-bottom-right fas fa-3x fa-plus-circle float-right'></i>
                     </div>
                 </div>
         </div>
