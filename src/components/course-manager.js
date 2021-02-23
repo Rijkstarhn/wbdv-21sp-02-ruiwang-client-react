@@ -2,8 +2,10 @@ import React from 'react'
 import CourseTable from './course-table/course-table';
 import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
+import CourseEditorBack from "./course-editorBack"
 import {Route} from "react-router-dom";
 import courseService from "../services/course-service";
+import CourseNavBar from "./course-navbar";
 
 export default class CourseManager extends React.Component {
 
@@ -11,14 +13,16 @@ export default class CourseManager extends React.Component {
         courses: [],
         inputCourseTitle: "",
         editing: false,
+        showInput: true,
+        showRightUpAddIcon: true,
     }
 
     componentDidMount = () => courseService.findAllCourses().then(courses => {
         this.setState({courses})
     })
 
-    addCourse = () => {
-        const newCourse = {title: this.state.inputCourseTitle, ownedBy: 'RW', lastModified: '2021/02/20'}
+    addCourse = (inputCourseTitle) => {
+        const newCourse = {title: inputCourseTitle, ownedBy: 'RW', lastModified: '2021/02/20'}
         courseService.createCourse(newCourse).then(course =>
             this.setState((prevState) => ({
                 ...prevState,
@@ -52,29 +56,21 @@ export default class CourseManager extends React.Component {
     render() {
         return (
             <div className='container-fluid'>
-
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <i className='fas fa-2x fa-bars'></i>
-                        <h1 className = 'courseManagerLeftMargin'>Course Manager</h1>
-                    </div>
-                    <form className="form-inline">
-                        <input onChange = {event => this.setState({inputCourseTitle:event.target.value})}
-                               value = {this.state.inputCourseTitle}
-                               className = 'form-control form-control mr-sm-2' />
-                        <i onClick = {() => this.addCourse()} className = 'redColor plusIconMargin fas fa-3x fa-plus-circle'></i>
-                    </form>
-                </nav>
             <Route path='/courses/table'>
+                <CourseNavBar addCourse = {this.addCourse}/>
                 <CourseTable deleteCourse = {this.deleteCourse}
                              updateCourse = {this.updateCourse}
                              addCourse = {this.addCourse}
                              courses={this.state.courses}/>
             </Route>
             <Route path='/courses/grid'>
+                <CourseNavBar addCourse = {this.addCourse}/>
                 <CourseGrid updateCourse = {this.updateCourse} deleteCourse = {this.deleteCourse} courses={this.state.courses}/>
             </Route>
             <Route path='/courses/editor' render={(props) => <CourseEditor {...props}/>}>
+            </Route>
+            <Route path = '/courses/editorback'>
+                <CourseEditorBack />
             </Route>
             </div>
         )
