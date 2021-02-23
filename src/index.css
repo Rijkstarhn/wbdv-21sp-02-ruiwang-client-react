@@ -46,7 +46,26 @@ code {
   width: 220px;
 }
 
-.plusIconStyle {
+.plusIconMargin {
   margin-left: 100px;
+}
+
+.redColor {
   color: red;
+}
+
+.checkIconColor {
+  color: forestgreen;
+}
+
+.crossIconColor {
+  color: red;
+}
+
+.editIconColor {
+  color: dodgerblue;
+}
+
+.blackColor {
+  color: black;
 }

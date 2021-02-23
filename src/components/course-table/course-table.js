@@ -17,17 +17,17 @@ export default class CourseTable extends React.Component {
                     <th>
                         Title
                     </th>
-                    <th>
+                    <th scope="col">
                         Owned by
                     </th>
                     <th>
                         Last modified
                     </th>
                     <th>
-                        <i className = 'fa fa-folder iconRightMargin'></i>
+                        <i className = 'fas fa-folder iconRightMargin'></i>
                         <i className="fas fa-sort-alpha-up-alt iconRightMargin"></i>
                         <Link to ='/courses/grid'>
-                            <i className = 'fa fa-th iconRightMargin'></i>
+                            <i className = 'blackColor fas fa-th iconRightMargin'></i>
                         </Link>
                     </th>
                 </tr>
@@ -48,7 +48,7 @@ export default class CourseTable extends React.Component {
             </table>
                 <div className='row'>
                     <div className = 'col'>
-                        <i onClick = {() => this.props.addCourse()} className = 'fas fa-3x fa-plus-circle float-right'></i>
+                        <i onClick = {() => this.props.addCourse()} className = 'redColor fas fa-3x fa-plus-circle float-right'></i>
                     </div>
                 </div>
         </div>

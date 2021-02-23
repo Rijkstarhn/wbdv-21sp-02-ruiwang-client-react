@@ -53,14 +53,16 @@ export default class CourseManager extends React.Component {
         return (
             <div className='container-fluid'>
 
-                <nav className="navbar navbar-light bg-light">
-                    <form className="form-inline">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <i className='fas fa-2x fa-bars'></i>
                         <h1 className = 'courseManagerLeftMargin'>Course Manager</h1>
+                    </div>
+                    <form className="form-inline">
                         <input onChange = {event => this.setState({inputCourseTitle:event.target.value})}
                                value = {this.state.inputCourseTitle}
-                               className = 'courseManagerInputStyle form-control' />
-                        <i onClick = {() => this.addCourse()} className = 'plusIconStyle fas fa-3x fa-plus-circle'></i>
+                               className = 'form-control form-control mr-sm-2' />
+                        <i onClick = {() => this.addCourse()} className = 'redColor plusIconMargin fas fa-3x fa-plus-circle'></i>
                     </form>
                 </nav>
 

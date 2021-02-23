@@ -37,13 +37,13 @@ const CourseRow = ({deleteCourse, updateCourse, course, title, ownedBy, lastModi
                 {lastModified}
             </td>
             <td>
-                {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
-                {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
+                {!editing && <i onClick={() => setEditing(true)} className="editIconColor fas fa-edit"></i>}
+                {editing && <i onClick={() => saveTitle()} className="checkIconColor fas fa-check"></i>}
                 {editing && <i onClick={() =>
                     {setEditing(false)
                     deleteCourse(course)
                     setNewTitle('')}
-                } className="fas fa-times"></i>}
+                } className="crossIconColor fas fa-times"></i>}
             </td>
         </tr>
     )

@@ -9,14 +9,14 @@ const CourseGrid = ({updateCourse, deleteCourse, courses}) =>
                 <h4>Recent Documents</h4>
             </div>
             <div className = 'col-4'>
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                <a className="blackColor nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" >
                     Owned by me
                 </a>
             </div>
             <div className = 'col-4'>
                 <Link to='/courses/table'>
-                    <i className="fas fa-list float-right"></i>
+                    <i className="blackColor fas fa-list float-right"></i>
                 </Link>
                 <i className="fas fa-sort-alpha-up-alt iconRightMargin float-right"></i>
                 <i className = 'fa fa-folder iconRightMargin float-right'></i>
