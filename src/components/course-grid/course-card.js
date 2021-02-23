@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 
-const CourseCard = ({deleteCourse, course}) => {
+const CourseCard = ({updateCourse, deleteCourse, course}) => {
 
     const [editing, setEditing] = useState(false)
+    const [newTitle, setNewTitle] = useState('')
 
-    const saveTitle = () => console.log('123')
+    const saveTitle = () => {
+        setEditing(false)
+        const newCourse = {
+            ...course,
+            title: newTitle
+        }
+        updateCourse(newCourse)
+    }
 
     return (
         <div className='col-4'>
@@ -14,9 +22,17 @@ const CourseCard = ({deleteCourse, course}) => {
                 <div className="card-body">
                     <h5 className="card-title">{course.title}</h5>
                     <p className="card-text">Course Description</p>
-                    <Link to='/courses/editor'>
-                        <a href="#" className="btn btn-primary">{course.title}</a>
-                    </Link>
+                    {
+                        !editing &&
+                        <Link to='/courses/editor'>
+                            <a href="#" className="btn btn-primary">{course.title}</a>
+                        </Link>
+                    }
+                    {
+                        editing &&
+                        <input onChange = {(event) => setNewTitle(event.target.value)}
+                               value={newTitle} className="form-control"/>
+                    }
                     {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
                     {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
                     {editing && <i onClick={() =>

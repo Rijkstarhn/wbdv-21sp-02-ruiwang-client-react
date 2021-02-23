@@ -6,7 +6,7 @@ const CourseEditor = ({history}) =>
         <div className="container">
             <div className="row col-sm-12  bg-secondary">
                 <div className="col-form-label col-sm-4">
-                    <Link to = '/courses'>
+                    <Link to = '/courses/table'>
                         <i className="navDivMargin fas fa-arrow-left text-white"></i>
                     </Link>
 

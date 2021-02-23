@@ -2,7 +2,7 @@ import React from 'react'
 import CourseCard from "./course-card";
 import {Link} from "react-router-dom";
 
-const CourseGrid = ({deleteCourse, courses}) =>
+const CourseGrid = ({updateCourse, deleteCourse, courses}) =>
     <div className = 'container-fluid'>
         <div className = 'row'>
             <div className = 'col-4'>
@@ -27,7 +27,8 @@ const CourseGrid = ({deleteCourse, courses}) =>
                 <CourseCard
                     key = {index}
                     course = {course}
-                    deleteCourse={deleteCourse}/>)}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}/>)}
         </div>
     </div>
 

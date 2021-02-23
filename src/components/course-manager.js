@@ -85,7 +85,7 @@ export default class CourseManager extends React.Component {
                              courses={this.state.courses}/>
             </Route>
             <Route path='/courses/grid'>
-                <CourseGrid deleteCourse = {this.deleteCourse} courses={this.state.courses}/>
+                <CourseGrid updateCourse = {this.updateCourse} deleteCourse = {this.deleteCourse} courses={this.state.courses}/>
             </Route>
             <Route path='/courses/editor' render={(props) => <CourseEditor {...props}/>}>
             </Route>
