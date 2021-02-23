@@ -41,7 +41,8 @@ const CourseRow = ({deleteCourse, updateCourse, course, title, ownedBy, lastModi
                 {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
                 {editing && <i onClick={() =>
                     {setEditing(false)
-                    deleteCourse(course)}
+                    deleteCourse(course)
+                    setNewTitle('')}
                 } className="fas fa-times"></i>}
             </td>
         </tr>

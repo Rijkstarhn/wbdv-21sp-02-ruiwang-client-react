@@ -28,6 +28,7 @@ export default class CourseManager extends React.Component {
                 ]
             }))
         )
+        this.setState({inputCourseTitle:''})
     }
 
     deleteCourse = (deletedCourse) => {
@@ -57,6 +58,7 @@ export default class CourseManager extends React.Component {
                         <i className='fas fa-2x fa-bars'></i>
                         <h1 className = 'courseManagerLeftMargin'>Course Manager</h1>
                         <input onChange = {event => this.setState({inputCourseTitle:event.target.value})}
+                               value = {this.state.inputCourseTitle}
                                className = 'courseManagerInputStyle form-control' />
                         <i onClick = {() => this.addCourse()} className = 'plusIconStyle fas fa-3x fa-plus-circle'></i>
                     </form>

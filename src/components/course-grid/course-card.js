@@ -36,8 +36,10 @@ const CourseCard = ({updateCourse, deleteCourse, course}) => {
                     {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
                     {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
                     {editing && <i onClick={() =>
-                    {setEditing(false)
-                        deleteCourse(course)}
+                    {   setEditing(false)
+                        deleteCourse(course)
+                        setNewTitle('')
+                    }
                     } className="fas fa-times"></i>}
                 </div>
             </div>

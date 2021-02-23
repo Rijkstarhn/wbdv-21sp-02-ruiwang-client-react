@@ -43,9 +43,10 @@ code {
 
 .courseManagerInputStyle {
   margin-left: 550px;
-  width: 300px;
+  width: 220px;
 }
 
 .plusIconStyle {
   margin-left: 100px;
+  color: red;
 }
