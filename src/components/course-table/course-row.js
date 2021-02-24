@@ -30,10 +30,10 @@ const CourseRow = ({deleteCourse, updateCourse, course, title, ownedBy, lastModi
                            value={newTitle} className="form-control"/>
                 }
             </td>
-            <td>
+            <td className = 'd-none d-md-table-cell'>
                 {ownedBy}
             </td>
-            <td>
+            <td className="d-none d-lg-table-cell">
                 {lastModified}
             </td>
             <td>

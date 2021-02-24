@@ -17,10 +17,10 @@ export default class CourseTable extends React.Component {
                     <th>
                         Title
                     </th>
-                    <th scope="col">
+                    <th className="d-none d-md-table-cell">
                         Owned by
                     </th>
-                    <th>
+                    <th className="d-none d-lg-table-cell">
                         Last modified
                     </th>
                     <th>

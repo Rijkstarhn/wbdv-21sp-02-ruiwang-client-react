@@ -6,10 +6,11 @@ const CourseGrid = ({updateCourse, deleteCourse, courses}) =>
     <div className = 'container-fluid'>
         <div className = 'row'>
             <div className = 'col-4'>
-                <h4>Recent Documents</h4>
+                <h4 className = '.d-none .d-md-block .d-lg-none'>Recent Documents</h4>
             </div>
             <div className = 'col-4'>
-                <a className="blackColor nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                <a className=".d-none .d-md-block .d-lg-none
+                blackColor nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" >
                     Owned by me
                 </a>
@@ -22,7 +23,7 @@ const CourseGrid = ({updateCourse, deleteCourse, courses}) =>
                 <i className = 'fa fa-folder iconRightMargin float-right'></i>
             </div>
         </div>
-        <div className = 'row'>
+        <div className = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4'>
             {courses.map((course, index) =>
                 <CourseCard
                     key = {index}
