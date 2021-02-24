@@ -5,12 +5,11 @@ import {Link} from "react-router-dom";
 const CourseGrid = ({updateCourse, deleteCourse, courses}) =>
     <div className = 'container-fluid'>
         <div className = 'row'>
-            <div className = 'col-4'>
-                <h4 className = '.d-none .d-md-block .d-lg-none'>Recent Documents</h4>
+            <div className = 'd-none d-md-block col-4'>
+                <h4>Recent Documents</h4>
             </div>
-            <div className = 'col-4'>
-                <a className=".d-none .d-md-block .d-lg-none
-                blackColor nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            <div className = 'd-none d-md-block col-4'>
+                <a className="blackColor nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" >
                     Owned by me
                 </a>
