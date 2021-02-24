@@ -13,7 +13,7 @@ const CourseNavBar = ({addCourse}) => {
             <input onChange={event => setNewTitle(event.target.value)}
                    value={newTitle}
                    className='form-control form-control mr-sm-2'/>
-            <i onClick={() => addCourse(newTitle)}
+            <i onClick={() => {addCourse(newTitle); setNewTitle('')}}
                className='redColor plusIconMargin fas fa-3x fa-plus-circle'></i>
         </form>
     </nav>)
