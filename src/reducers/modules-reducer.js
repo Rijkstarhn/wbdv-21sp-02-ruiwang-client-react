@@ -8,12 +8,17 @@ const initialState = {
 
 const moduleReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FIND_MODULES_FOR_COURSE":
+            return {
+                ...state,
+                modules: action.modules
+            }
+
         case "CREATE_MODULE":
             const createdModule = {
                 modules: [
                     ...state.modules,
-                    {_id: 321,
-                    title:'New module'}
+                    action.module
                 ]
             }
             return createdModule

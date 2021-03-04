@@ -67,7 +67,9 @@ export default class CourseManager extends React.Component {
                 <CourseNavBar addCourse = {this.addCourse}/>
                 <CourseGrid updateCourse = {this.updateCourse} deleteCourse = {this.deleteCourse} courses={this.state.courses}/>
             </Route>
-            <Route path='/courses/editor' render={(props) => <CourseEditor {...props}/>}>
+                {/*Below the path={[]} expression is a good way to make many url reference to one page*/}
+            <Route path={['/courses/editor/:courseId/:moduleId','/courses/editor/:courseId/:moduleId/:lessonId']}
+                   render={(props) => <CourseEditor {...props}/>}>
             </Route>
             <Route path = '/courses/editorback'>
                 <CourseEditorBack />

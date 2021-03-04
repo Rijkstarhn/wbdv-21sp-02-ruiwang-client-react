@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import moduleReducer from "../../reducers/modules-reducer";
@@ -18,8 +18,10 @@ const reducer = combineReducers({
 
 const store = createStore(reducer)
 
-const CourseEditor = ({history}) =>
-    <Provider store = {store}>
+const CourseEditor = ({history}) => {
+    const {courseId, moduleId} = useParams();
+    return (
+        <Provider store = {store}>
         <div>
             <div className="container">
                 <div className="row col-sm-12  bg-secondary">
@@ -31,6 +33,7 @@ const CourseEditor = ({history}) =>
                            className="navDivMargin fas fa-times text-white"></i>
                         <a className=" navbar-brand mb-0 h1 text-white" href="#">CS5610 - Webdev</a>
                     </div>
+                    <h1>{courseId} {moduleId}</h1>
                     <div className="col-form-label col-sm-8">
                         <ul className="nav nav-tabs mr-auto nav-fill">
                             <li className="nav-item active">
@@ -116,6 +119,9 @@ const CourseEditor = ({history}) =>
             </div>
         </div>
     </Provider>
+    )
+}
+
 
 
 export default CourseEditor
