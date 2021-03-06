@@ -79,3 +79,7 @@ code {
   bottom: 15px;
 
 }
+
+.list-group-item.active a {
+  color: white;
+}

@@ -5,7 +5,8 @@ const EditableItem = ({
         to='/somewhere/to/go',
         item={title:'hhh', _id:'123'},
         deleteItem = () => alert('delete item why?'),
-        updateItem = () => alert('update item')}) => {
+        updateItem = () => alert('update item'),
+                          active = false}) => {
 
     // state hook
     const [editing, setEditing] = useState(false)
@@ -15,7 +16,7 @@ const EditableItem = ({
         <>
             {
                 !editing && <>
-                    <Link className='nav-link' to = {to}>
+                    <Link className={`nav-link ${active? 'active' : ''}`} to = {to}>
                         {item.title}
                     </Link>
                     <i onClick={() => setEditing(true)} className='fas fa-edit'></i>

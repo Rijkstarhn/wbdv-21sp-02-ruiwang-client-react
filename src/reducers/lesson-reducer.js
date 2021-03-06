@@ -8,6 +8,14 @@ const initialState = {
 
 const lessonReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'CREATE_LESSON':
+            return {
+                ...state,
+                lessons: [
+                    ...state.lessons,
+                    action.lesson
+                ]
+            }
         case 'DELETE_LESSON':
             const deletedLesson = {
                 lessons: state.lessons.filter((lesson) => {
@@ -20,6 +28,11 @@ const lessonReducer = (state = initialState, action) => {
                 )
             }
             return deletedLesson
+        case 'FIND_LESSONS':
+            return {
+                ...state,
+                lessons: action.lessons
+            }
         default:
             return state
     }
