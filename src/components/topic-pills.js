@@ -24,7 +24,7 @@ const TopicPills = ({
                     <li className="nav-item pillMargin">
                         <a className="nav-link" href="#">
                             <EditableItem
-                                to = {`/courses/editor/${courseId}/${moduleId}/${lessonId}/${topic._id}`}
+                                to = {`/courses/:layout/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 active = {topic._id === topicId}
                                 item = {topic}
                                 deleteItem = {deleteTopic}

@@ -10,7 +10,7 @@ const LessonTabs = ({
     findLessonsForModule = (moduleId) => alert('find Lessons For Module'),
     createLessonForModule = (moduleId, lesson) => alert('create Lesson For Module'),}) => {
 
-    const {courseId, moduleId, lessonId} = useParams();
+    const {courseId, moduleId, lessonId, layout} = useParams();
 
     useEffect(() => {
         if (moduleId !== "undefined" && typeof moduleId !== "undefined") {
@@ -26,7 +26,7 @@ const LessonTabs = ({
                     myLessons.map((lesson) =>
                         <li className = 'nav-item'>
                             <a href='#' className = 'nav-link'>
-                                <EditableItem to = {`/courses/editor/${courseId}/${moduleId}/${lesson._id}`}
+                                <EditableItem to = {`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
                                               item={lesson}
                                               deleteItem={deleteLesson}
                                               updateItem = {updateLesson}

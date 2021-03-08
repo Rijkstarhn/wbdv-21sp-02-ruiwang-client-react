@@ -56,23 +56,23 @@ export default class CourseManager extends React.Component {
     render() {
         return (
             <div className='container-fluid'>
-            <Route path='/courses/table'>
+            <Route path='/courses/table' exact = {true}> {/*the exact need to be true!*/}
                 <CourseNavBar addCourse = {this.addCourse}/>
                 <CourseTable deleteCourse = {this.deleteCourse}
                              updateCourse = {this.updateCourse}
                              addCourse = {this.addCourse}
                              courses={this.state.courses}/>
             </Route>
-            <Route path='/courses/grid'>
+            <Route path='/courses/grid' exact = {true}> {/*the exact need to be true!*/}
                 <CourseNavBar addCourse = {this.addCourse}/>
                 <CourseGrid updateCourse = {this.updateCourse} deleteCourse = {this.deleteCourse} courses={this.state.courses}/>
             </Route>
                 {/*Below the path={[]} expression is a good way to make many url reference to one page*/}
             <Route path={[
-                '/courses/editor/:courseId',
-                '/courses/editor/:courseId/:moduleId',
-                '/courses/editor/:courseId/:moduleId/:lessonId',
-                '/courses/editor/:courseId/:moduleId/:lessonId/:topicId',]}
+                '/courses/:layout/edit/:courseId',
+                '/courses/:layout/edit/:courseId/modules/:moduleId',
+                '/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId',
+                '/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId',]}
                    exact={true}
                    render={(props) => <CourseEditor {...props}/>}>
             </Route>
