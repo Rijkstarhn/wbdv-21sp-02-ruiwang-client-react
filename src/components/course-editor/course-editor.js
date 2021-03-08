@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link, useParams} from "react-router-dom";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
@@ -8,6 +8,7 @@ import topicReducer from "../../reducers/topic-reducer";
 import ModuleList from "../module-list";
 import LessonTabs from "../lesson-tabs";
 import TopicPills from "../topic-pills";
+import courseService from "../../services/course-service";
 
 
 
@@ -24,6 +25,11 @@ const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
     const {courseId, moduleId, layout} = useParams();
+    const [courseTitle, setCourseTitle] = useState('');
+    
+    useEffect(() => courseService.findCourseById(courseId).then(
+        res => setCourseTitle(res.title)
+    ), [])
     // console.log('layoutId', layout);
     return (
         <Provider store = {store}>
@@ -39,7 +45,7 @@ const CourseEditor = ({history}) => {
                         </Link>
                         {/*<i onClick={() => history.goBack()}*/}
                         {/*   className="editIconColor navDivMargin fas fa-times"></i>*/}
-                        <a className=" navbar-brand mb-0 h1" href="#">CS5610 - Webdev</a>
+                        <a className=" navbar-brand mb-0 h1" href="#">{courseTitle}</a>
                     </div>
 
                     <div className="col-form-label col-sm-8">
@@ -65,57 +71,12 @@ const CourseEditor = ({history}) => {
                                     className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#"><i className=" fas fa-plus-circle"></i><span
+                                <a className="nav-link" href="#"><i className=" fas fa-plus-circle fa-2x"></i><span
                                     className="sr-only">(current)</span></a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                {/*<div className="row">*/}
-                {/*    <div className="container containerMargin col-sm-4  bg-dark">*/}
-                {/*        <div className="list-group">*/}
-                {/*            <a className="list-group-item list-group-item-action text-white bg-secondary" href="#">Module 1*/}
-                {/*                jQuery<i*/}
-                {/*                    className="float-right fas fa-times"></i></a>*/}
-                {/*            <a className="list-group-item list-group-item-action text-white bg-secondary" href="#">Module 2*/}
-                {/*                React<i*/}
-                {/*                    className="float-right fas fa-times"></i></a>*/}
-                {/*            <a className="list-group-item list-group-item-action text-white bg-secondary" href="#">Module 3*/}
-                {/*                Redux<i*/}
-                {/*                    className="float-right fas fa-times"></i></a>*/}
-                {/*            <a className="list-group-item list-group-item-action text-white bg-secondary" href="#">Module 4*/}
-                {/*                Native<i*/}
-                {/*                    className="float-right fas fa-times"></i></a>*/}
-                {/*            <a className="list-group-item list-group-item-action text-white bg-secondary" href="#">Module 5*/}
-                {/*                Angular<i*/}
-                {/*                    className="float-right fas fa-times"></i></a>*/}
-                {/*            <a className="list-group-item list-group-item-action text-white bg-secondary" href="#"><i*/}
-                {/*                className="float-right fas fa-plus-circle"></i></a>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className="col-sm-8">*/}
-                {/*        <ul className="pillsMargin nav nav-pills nav-fill">*/}
-                {/*            <li className="nav-item">*/}
-                {/*                <a className="nav-link active bg-secondary" href="#">Topic 1</a>*/}
-                {/*            </li>*/}
-                {/*            <li className="nav-item">*/}
-                {/*                <a className="nav-link text-secondary" href="#">Topic 2</a>*/}
-                {/*            </li>*/}
-                {/*            <li className="nav-item">*/}
-                {/*                <a className="nav-link text-secondary" href="#">Topic 3</a>*/}
-                {/*            </li>*/}
-                {/*            <li className="nav-item">*/}
-                {/*                <a className="nav-link text-secondary" href="#">Topic 4</a>*/}
-                {/*            </li>*/}
-                {/*            <li className="nav-item">*/}
-                {/*                <a className="nav-link text-secondary" href="#"><i*/}
-                {/*                    className="fas fa-plus-circle fa-lg"></i></a>*/}
-                {/*            </li>*/}
-                {/*        </ul>*/}
-                {/*        <br/>*/}
-                {/*        Content currently blank*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
             <div className = 'row'>
                 <div className = 'col-4'>

@@ -33,7 +33,7 @@ const TopicPills = ({
                     </li>
                 )}
                 <li>
-                    <i onClick = {() => createTopic(lessonId)} className = 'editIconColor fas fa-plus-circle'></i>
+                    <i onClick = {() => createTopic(lessonId)} className = 'editIconColor fas fa-plus-circle fa-2x'></i>
                 </li>
             </ul>
         </div>

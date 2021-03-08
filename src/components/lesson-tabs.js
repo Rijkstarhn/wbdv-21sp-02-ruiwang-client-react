@@ -36,7 +36,7 @@ const LessonTabs = ({
                         </li>)
                 }
                 <li>
-                    <i onClick = {() => createLessonForModule(moduleId)} className = 'editIconColor fas fa-plus-circle'></i>
+                    <i onClick = {() => createLessonForModule(moduleId)} className = 'editIconColor fas fa-plus-circle fa-2x'></i>
                 </li>
             </ul>
         </div>

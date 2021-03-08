@@ -17,9 +17,9 @@ const EditableItem = ({
                 !editing && <>
                     <Link className={`nav-link ${active? 'active' : ''}`} to = {to}>
                         {item.title}
+                        <i onClick={() => setEditing(true)}
+                           className={`d-inline float-right editIconMargin fas fa-edit ${active? 'active' : ''} ${active? 'editIconColor' : 'editIconColorActive'}`}></i>
                     </Link>
-                    <i onClick={() => setEditing(true)}
-                       className={`fas fa-edit ${active? 'active' : ''} ${active? 'editIconColor' : 'editIconColorActive'}`}></i>
                 </>
             }
             {
