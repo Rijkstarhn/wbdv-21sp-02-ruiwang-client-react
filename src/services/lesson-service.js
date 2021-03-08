@@ -8,7 +8,7 @@ export const findLessonsForModule = (moduleId) => {
     ))
 }
 
-export const createLessonForModule = (moduleId, lesson) => {
+export const createLessonForModule = (moduleId, lesson) =>
     fetch(`${MODULES_URL}/${moduleId}/lessons`, {
         method: 'POST',
         body: JSON.stringify(lesson),
@@ -18,7 +18,7 @@ export const createLessonForModule = (moduleId, lesson) => {
     }).then(
         res => res.json()
     )
-}
+
 
 export const deleteLesson = (lessonId) =>
     fetch (`${LESSON_URL}/${lessonId}`, {
