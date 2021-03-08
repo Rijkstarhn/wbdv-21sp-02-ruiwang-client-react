@@ -15,9 +15,9 @@ const ModuleList = ({
     useEffect(() => {
         findModulesForCourse(courseId)
     }, [])
+    console.log(courseId)
     return (
         <div>
-            <h2>Modules {myModules.length}</h2>
             <ul className='list-group'>
                 {myModules.map((module) =>
                     <li className = {`list-group-item ${module._id === moduleId ? 'active' : ''}`}>
@@ -43,9 +43,11 @@ const stpm = (state) => {
 
 const dtpm = (dispatch) => {
     return {
-        createModule: (courseId) =>
-            moduleService.createModuleForCourse(courseId, module).then(actualModule =>
-                dispatch({type: 'CREATE_MODULE', module: actualModule}))
+        createModule: (courseId) => {
+            moduleService.createModuleForCourse(courseId, {title: 'New Module'}).then(actualModule =>
+                dispatch({type: 'CREATE_MODULE', module: actualModule}));
+        }
+
         ,
         deleteModule: (item) =>
             moduleService.deleteModule(item._id).then(

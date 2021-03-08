@@ -6,9 +6,8 @@ const EditableItem = ({
         item={title:'hhh', _id:'123'},
         deleteItem = () => alert('delete item why?'),
         updateItem = () => alert('update item'),
-                          active = false}) => {
-
-    // state hook
+        active}) => {
+    // local state hook
     const [editing, setEditing] = useState(false)
     const [cachedItem, setCachedItem] = useState(item)
 

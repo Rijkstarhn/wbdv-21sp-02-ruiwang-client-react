@@ -1,13 +1,19 @@
 const initialState = {
-    lessons: [
-        {_id: 123, title:'Lesson 123fromReducer'},
-        {_id: 345, title:'Lesson 345fromReducer'},
-        {_id: 667, title:'Lesson 456fromReducer'},
-    ]
+    lessons: []
 }
 
 const lessonReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'UPDATE_LESSON':
+            return {
+                lessons: state.lessons.map (lesson => {
+                    if (lesson._id === action.updateLesson._id) {
+                        return action.updateLesson
+                    } else {
+                        return lesson
+                    }
+                })
+            }
         case 'CREATE_LESSON':
             return {
                 ...state,

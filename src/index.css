@@ -20,6 +20,15 @@ code {
   margin-top: 20px;
 }
 
+.pillMargin {
+  margin-right: 20px;
+}
+
+.pillSize {
+  width: 30px;
+  height: 20px;
+}
+
 .crossIconMargin {
   margin-right: 50px;
 }
