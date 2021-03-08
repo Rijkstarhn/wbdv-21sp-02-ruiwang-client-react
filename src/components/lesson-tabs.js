@@ -18,7 +18,7 @@ const LessonTabs = ({
         }
         // console.log('from useEffect lesson tabs', moduleId)
     }, [moduleId])
-
+    // console.log('lessonId in lesson-tab', lessonId);
     return (
         <div>
             <ul className='nav nav-pills'>
@@ -36,7 +36,7 @@ const LessonTabs = ({
                         </li>)
                 }
                 <li>
-                    <i onClick = {() => createLessonForModule(moduleId)} className = 'fas fa-plus-circle'></i>
+                    <i onClick = {() => createLessonForModule(moduleId)} className = 'editIconColor fas fa-plus-circle'></i>
                 </li>
             </ul>
         </div>

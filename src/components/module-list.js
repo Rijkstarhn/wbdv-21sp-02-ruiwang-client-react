@@ -28,7 +28,7 @@ const ModuleList = ({
                             updateItem = {updateModule}/>
                     </li>)}
                 <li className = 'list-group-item'>
-                    <i onClick = {() => createModule(courseId)} className = 'fas fa-plus-circle fa-2x'></i>
+                    <i onClick = {() => createModule(courseId)} className = 'editIconColor fas fa-plus-circle fa-2x'></i>
                 </li>
             </ul>
         </div>

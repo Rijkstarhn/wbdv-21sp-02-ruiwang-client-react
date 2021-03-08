@@ -23,18 +23,22 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
-    const {courseId, moduleId} = useParams();
+    const {courseId, moduleId, layout} = useParams();
+    // console.log('layoutId', layout);
     return (
         <Provider store = {store}>
         <div>
             <div className="container-fluid">
                 <div className="row col-sm-12 ">
                     <div className="col-form-label col-sm-4">
-                        <Link to = '/courses/editorback'>
-                            <i className="navDivMargin fas fa-arrow-left"></i>
+                        {/*<Link to = '/courses/editorback'>*/}
+                        {/*    <i className="navDivMargin fas fa-arrow-left"></i>*/}
+                        {/*</Link>*/}
+                        <Link to ={`/courses/${layout}`}>
+                            <i className="editIconColor navDivMargin fas fa-times"></i>
                         </Link>
-                        <i onClick={() => history.goBack()}
-                           className="navDivMargin fas fa-times"></i>
+                        {/*<i onClick={() => history.goBack()}*/}
+                        {/*   className="editIconColor navDivMargin fas fa-times"></i>*/}
                         <a className=" navbar-brand mb-0 h1" href="#">CS5610 - Webdev</a>
                     </div>
 

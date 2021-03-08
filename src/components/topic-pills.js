@@ -10,7 +10,7 @@ const TopicPills = ({
     findTopicsForLesson,
     deleteTopic,
     updateTopic}) => {
-    const {courseId, moduleId, lessonId, topicId} = useParams();
+    const {courseId, moduleId, lessonId, topicId, layout} = useParams();
     useEffect(() => {
         if (lessonId !== "undefined" && typeof lessonId !== "undefined") {
             findTopicsForLesson(lessonId)
@@ -24,7 +24,7 @@ const TopicPills = ({
                     <li className="nav-item pillMargin">
                         <a className="nav-link" href="#">
                             <EditableItem
-                                to = {`/courses/:layout/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
+                                to = {`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 active = {topic._id === topicId}
                                 item = {topic}
                                 deleteItem = {deleteTopic}
@@ -33,7 +33,7 @@ const TopicPills = ({
                     </li>
                 )}
                 <li>
-                    <i onClick = {() => createTopic(lessonId)} className = 'fas fa-plus-circle'></i>
+                    <i onClick = {() => createTopic(lessonId)} className = 'editIconColor fas fa-plus-circle'></i>
                 </li>
             </ul>
         </div>
@@ -52,7 +52,7 @@ const dtpm = (dispatch) => {
         findTopicsForLesson: (lessonId) => topicService.findTopicsForLesson(lessonId).then(
             topics => dispatch({type: 'FIND_TOPICS', topics: topics})
         ),
-        createTopic: (lessonId) => topicService.createTopic(lessonId, {title: 'New Topic debug'}).then(
+        createTopic: (lessonId) => topicService.createTopic(lessonId, {title: 'New Topic'}).then(
             topic => {
                 console.log(topic)
                 dispatch({type: 'CREATE_TOPIC', topic: topic})
