@@ -54,7 +54,10 @@ const stpm = (state) => {
 const dtpm = (dispatch) => {
     return {
         deleteLesson: (lesson) => lessonService.deleteLesson(lesson._id).then(
-            status => dispatch({type: 'DELETE_LESSON', deleteLesson: lesson})
+            status => {
+                dispatch({type: 'DELETE_LESSON', deleteLesson: lesson})
+                dispatch({type: 'FIND_TOPICS', topics: []})
+            }
         ),
         findLessonsForModule:(moduleId) => lessonService.findLessonsForModule(moduleId).then(
             lessons => dispatch({type: 'FIND_LESSONS', lessons: lessons})

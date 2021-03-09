@@ -47,12 +47,14 @@ const dtpm = (dispatch) => {
             moduleService.createModuleForCourse(courseId, {title: 'New Module'}).then(actualModule =>
                 dispatch({type: 'CREATE_MODULE', module: actualModule}));
         }
-
         ,
         deleteModule: (item) =>
             moduleService.deleteModule(item._id).then(
-                status => dispatch({type: 'DELETE_MODULE', deleteModule: item}
-                ))
+                status => {
+                    dispatch({type: 'DELETE_MODULE', deleteModule: item})
+                    dispatch({type: 'FIND_LESSONS', lessons: []})
+                    dispatch({type: 'FIND_TOPICS', topics: []})
+                })
         ,
         updateModule: (module) => moduleService.updateModule(module._id, module).then(
             status => dispatch({type: 'UPDATE_MODULE', updateModule: module})
