@@ -25,7 +25,14 @@ const EditableItem = ({
             {
                 editing && <>
                     <input onChange={
-                        (event) => setCachedItem({...cachedItem, title: event.target.value})
+                        (event) => {
+                            // console.log('cachedItem',cachedItem)
+                            // console.log('item',item)
+                            // console.log('eventargetvalue', event.target.value)
+                            setCachedItem({...item, title: event.target.value})
+                            // console.log('cachedItemAfter',cachedItem)
+                            // console.log('itemAfter',item)
+                        }
                     } value={cachedItem.title} className='input'/>
                     <i onClick={() => {
                         updateItem(cachedItem)
