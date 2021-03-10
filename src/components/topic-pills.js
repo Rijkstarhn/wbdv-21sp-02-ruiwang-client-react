@@ -12,10 +12,8 @@ const TopicPills = ({
     updateTopic}) => {
     const {courseId, moduleId, lessonId, topicId, layout} = useParams();
     useEffect(() => {
-        if (lessonId !== "undefined" && typeof lessonId !== "undefined") {
-            findTopicsForLesson(lessonId)
-        }
-    }, [lessonId])
+        findTopicsForLesson(lessonId)
+    }, [moduleId, lessonId])
 
     return (
         <div>
@@ -51,6 +49,10 @@ const dtpm = (dispatch) => {
     return {
         findTopicsForLesson: (lessonId) => topicService.findTopicsForLesson(lessonId).then(
             topics => dispatch({type: 'FIND_TOPICS', topics: topics})
+            // dangerous code!!!
+            // topics => topics.map(topic => topicService.deleteTopic(topic._id).then(
+            //     status => console.log('delete!')
+            // )
         ),
         createTopic: (lessonId) => topicService.createTopic(lessonId, {title: 'New Topic'}).then(
             topic => {
@@ -63,7 +65,7 @@ const dtpm = (dispatch) => {
         ),
         updateTopic: (topic) => topicService.updateTopic(topic._id, topic).then (
             status => dispatch({type: 'UPDATE_TOPIC', topic: topic})
-        )
+        ),
     }
 }
 
