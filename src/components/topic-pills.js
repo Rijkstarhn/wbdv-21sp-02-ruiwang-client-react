@@ -25,6 +25,7 @@ const TopicPills = ({
                         <a className="nav-link" href="#">
                             <EditableItem
                                 to = {`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
+                                key = {topic._id}
                                 active = {topic._id === topicId}
                                 item = {topic}
                                 deleteItem = {deleteTopic}
