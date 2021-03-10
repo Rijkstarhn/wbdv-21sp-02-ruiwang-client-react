@@ -21,11 +21,10 @@ const TopicPills = ({
         <div>
             <ul className="pillsMargin nav nav-pills">
                 {myTopics.map((topic) =>
-                    <li className="nav-item pillMargin">
+                    <li className="nav-item pillMargin" key = {topic._id}>
                         <a className="nav-link" href="#">
                             <EditableItem
                                 to = {`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
-                                key = {topic._id}
                                 active = {topic._id === topicId}
                                 item = {topic}
                                 deleteItem = {deleteTopic}
