@@ -56,6 +56,7 @@ const dtpm = (dispatch) => {
         deleteLesson: (lesson) => lessonService.deleteLesson(lesson._id).then(
             status => {
                 dispatch({type: 'DELETE_LESSON', deleteLesson: lesson})
+                // refresh the module contents after deleting
                 dispatch({type: 'FIND_TOPICS', topics: []})
             }
         ),
