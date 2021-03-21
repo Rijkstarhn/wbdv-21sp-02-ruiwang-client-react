@@ -14,14 +14,18 @@ export const findWidgetsForTopic = tid =>
         res => res.json()
     )
 
-export const updateWidget = (wid, widget) =>
-    fetch(`${WIDGET_URL}/widgets/${wid}`, {
+export const updateWidget = (wid, widget) => {
+    return fetch(`${WIDGET_URL}/widgets/${wid}`, {
         method: 'PUT',
         body: JSON.stringify(widget),
         headers: {
             'content-type':'application/json'
         }
-    }).then(res => res.json())
+    }).then(res => {
+        return res.json()
+    })
+}
+
 
 export const deleteWidget = wid =>
     fetch(`${WIDGET_URL}/widgets/${wid}`, {

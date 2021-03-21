@@ -14,8 +14,17 @@ const WidgetList = ({myWidgets = [], createWidgetForTopic, updateWidget, deleteW
     }, [topicId])
     return (
         <div>
-            <i onClick={() => createWidgetForTopic(topicId, {title: 'Not important what here is'})}
-               className="fas fa-plus fa-2x float-right"></i>
+            <br/>
+            <div className = 'row'>
+                <div className = 'col'>
+                    <h1>Widget Lists</h1>
+                </div>
+                <div className = 'col'>
+                    <i onClick={() => createWidgetForTopic(topicId, {title: 'Not important what here is'})}
+                       className="editIconColor fas fa-plus-circle fa-2x float-right"></i>
+                </div>
+            </div>
+            <br/>
             <ul className = 'list-group'>
                 {myWidgets.map(widget =>
                     <li className = 'list-group-item' key = {widget.id}>
@@ -59,7 +68,7 @@ const dtpm = (dispatch) => {
         updateWidget: (widget) =>
             widgetService.updateWidget(widget.widgetId, widget).then(
                 status => {
-                    console.log('updateStatus', widget);
+                    // console.log('updateStatus', widget);
                     dispatch({type: 'UPDATE_WIDGET', updateWidget: widget})
                 }
             ),
