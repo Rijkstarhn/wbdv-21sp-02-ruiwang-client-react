@@ -1,20 +1,19 @@
+import {CREATE_MODULE, DELETE_MODULE, FIND_MODULES_FOR_COURSE, UPDATE_MODULE} from "../actions/module-actions";
+
+
 const initialState = {
-    modules: [
-        // {_id: 123, title: "Module 123"},
-        // {_id: 234, title: "Module 234"},
-        // {_id: 345, title: "Module 345"}
-    ]
+    modules: []
 }
 
 const moduleReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "FIND_MODULES_FOR_COURSE":
+        case FIND_MODULES_FOR_COURSE:
             return {
                 ...state,
                 modules: action.modules
             }
 
-        case "CREATE_MODULE":
+        case CREATE_MODULE:
             const createdModule = {
                 modules: [
                     ...state.modules,
@@ -22,7 +21,7 @@ const moduleReducer = (state = initialState, action) => {
                 ]
             }
             return createdModule
-        case "DELETE_MODULE":
+        case DELETE_MODULE:
             const deletedModule = {
                 modules: state.modules.filter((module) => {
                     if (module._id === action.deleteModule._id) {
@@ -33,7 +32,7 @@ const moduleReducer = (state = initialState, action) => {
                 })
             }
             return deletedModule
-        case "UPDATE_MODULE":
+        case UPDATE_MODULE:
             const updatedModule = {
                 modules: state.modules.map (module => {
                     if (module._id === action.updateModule._id) {

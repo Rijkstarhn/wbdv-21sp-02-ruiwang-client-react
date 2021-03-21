@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
-import widgetService from "../../../services/widget-service";
+import widgetActions from "../../../actions/widget-actions";
 
 const WidgetList = ({myWidgets = [], createWidgetForTopic, updateWidget, deleteWidget, findWidgetsForTopic}) => {
     const {topicId, wid} = useParams();
@@ -59,29 +59,10 @@ const stpm = (state) => {
 
 const dtpm = (dispatch) => {
     return {
-        createWidgetForTopic: (tid, widget) => {
-            // console.log('tid', tid);
-            widgetService.createWidget(tid, widget).then(
-                widget => dispatch({type:'CREATE_WIDGET', widget: widget})
-            )
-        },
-        updateWidget: (widget) =>
-            widgetService.updateWidget(widget.widgetId, widget).then(
-                status => {
-                    // console.log('updateStatus', widget);
-                    dispatch({type: 'UPDATE_WIDGET', updateWidget: widget})
-                }
-            ),
-        deleteWidget: (wid) =>
-            widgetService.deleteWidget(wid).then(
-                status => dispatch({type:'DELETE_WIDGET', deleteWidgetId: wid})
-            ),
-        findWidgetsForTopic: (tid) => {
-            // console.log('tidFind', tid);
-            widgetService.findWidgetsForTopic(tid).then (
-                widgets => dispatch({type: 'FIND_ALL_WIDGETS_FOR_TOPIC', widgets: widgets})
-            )
-        },
+        createWidgetForTopic: (tid, widget) => widgetActions.createWidgetForTopic(dispatch, tid, widget),
+        updateWidget: (widget) => widgetActions.updateWidget(dispatch, widget),
+        deleteWidget: (wid) => widgetActions.deleteWidget(dispatch, wid),
+        findWidgetsForTopic: (tid) => widgetActions.findWidgetsForTopic(dispatch, tid),
     }
 }
 

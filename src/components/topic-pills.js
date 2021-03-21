@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import topicService from '../services/topic-service'
 import {useParams} from "react-router-dom";
 import EditableItem from "./editable-item";
+import topicActions from "../actions/topic-actions";
 
 const TopicPills = ({
     myTopics=[],
@@ -47,25 +48,10 @@ const stpm = (state) => {
 
 const dtpm = (dispatch) => {
     return {
-        findTopicsForLesson: (lessonId) => topicService.findTopicsForLesson(lessonId).then(
-            topics => dispatch({type: 'FIND_TOPICS', topics: topics})
-            // dangerous code!!!
-            // topics => topics.map(topic => topicService.deleteTopic(topic._id).then(
-            //     status => console.log('delete!')
-            // )
-        ),
-        createTopic: (lessonId) => topicService.createTopic(lessonId, {title: 'New Topic'}).then(
-            topic => {
-                console.log(topic)
-                dispatch({type: 'CREATE_TOPIC', topic: topic})
-            }
-        ),
-        deleteTopic: (topic) => topicService.deleteTopic(topic._id).then(
-            status => dispatch({type:'DELETE_TOPIC', topic: topic})
-        ),
-        updateTopic: (topic) => topicService.updateTopic(topic._id, topic).then (
-            status => dispatch({type: 'UPDATE_TOPIC', topic: topic})
-        ),
+        findTopicsForLesson: (lessonId) => topicActions.findTopicsForLesson(dispatch, lessonId),
+        createTopic: (lessonId) => topicActions.createTopic(dispatch, lessonId),
+        deleteTopic: (topic) => topicActions.deleteTopic(dispatch, topic),
+        updateTopic: (topic) => topicActions.updateTopic(dispatch, topic),
     }
 }
 
