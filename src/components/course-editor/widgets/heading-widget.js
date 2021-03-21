@@ -16,8 +16,18 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
                         deleteWidget(widget.id);
                         setEditingStatus(false);
                     }} className="fas fa-trash float-right"></i>
-                    <input value={widget.text} className="form-control"/>
-                    <select value={widget.size} className="form-control">
+                    <input value={cachedWidget.text}
+                           onChange={(event) => setCachedWidget(
+                               {...cachedWidget, text: event.target.value}
+                           )}
+                           className="form-control"/>
+                    <select value={cachedWidget.size}
+                            onChange={(event) => {
+                                setCachedWidget(
+                                    {...cachedWidget, size: parseInt(event.target.value)}
+                                )
+                            }}
+                            className="form-control">
                         <option value={1}>Heading 1</option>
                         <option value={2}>Heading 2</option>
                         <option value={3}>Heading 3</option>
@@ -27,7 +37,7 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
                     </select>
                     <select value={cachedWidget.type} className="form-control"
                             onChange = {(event) => setCachedWidget({
-                                ...widget, type: event.target.value
+                                ...cachedWidget, type: event.target.value
                             })}>
                         <option value='HEADING'>Heading</option>
                         <option value='PARAGRAPH'>Paragraph</option>
@@ -42,13 +52,16 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
             {
                 !editingStatus &&
                 <>
-                    <i onClick={() => setEditingStatus(true)} className="fas fa-2x fa-cog float-right"></i>
-                    {widget.size === 1 && <h1>{widget.text}</h1>}
-                    {widget.size === 2 && <h2>{widget.text}</h2>}
-                    {widget.size === 3 && <h3>{widget.text}</h3>}
-                    {widget.size === 4 && <h4>{widget.text}</h4>}
-                    {widget.size === 5 && <h5>{widget.text}</h5>}
-                    {widget.size === 6 && <h6>{widget.text}</h6>}
+                    <i onClick={() => {
+                        setEditingStatus(true)
+                        // console.log('see cachedWidget', typeof  cachedWidget.size);
+                    }} className="fas fa-2x fa-cog float-right"></i>
+                    {cachedWidget.size === 1 && <h1>{cachedWidget.text}</h1>}
+                    {cachedWidget.size === 2 && <h2>{cachedWidget.text}</h2>}
+                    {cachedWidget.size === 3 && <h3>{cachedWidget.text}</h3>}
+                    {cachedWidget.size === 4 && <h4>{cachedWidget.text}</h4>}
+                    {cachedWidget.size === 5 && <h5>{cachedWidget.text}</h5>}
+                    {cachedWidget.size === 6 && <h6>{cachedWidget.text}</h6>}
                 </>
             }
         </>

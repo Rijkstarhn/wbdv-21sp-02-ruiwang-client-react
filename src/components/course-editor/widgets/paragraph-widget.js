@@ -18,7 +18,7 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget}) => {
                     }} className="fas fa-trash float-right"></i>
                     <select value={cachedWidget.type} className="form-control"
                             onChange = {(event) => setCachedWidget({
-                                ...widget, type: event.target.value
+                                ...cachedWidget, type: event.target.value
                             })}>
                         <option value='HEADING'>Heading</option>
                         <option value='PARAGRAPH'>Paragraph</option>
@@ -28,14 +28,11 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget}) => {
                         <option value='LIST'>List</option>
                         <option value='HTML'>HTML</option>
                     </select>
-                    <textarea value={cachedWidget.text} className="form-control" id = 'ta1' onChange={
-                        (event) => {
-                            let value = document.getElementById("ta1");
-                            console.log('cachedWidgetVVV', value);
+                    <textarea value={cachedWidget.text} className="form-control" onChange={
+                        (event) =>
                             setCachedWidget({
-                                ...widget, text: event.target.value
+                                ...cachedWidget, text: event.target.value
                             })
-                        }
                     }
                     ></textarea>
                 </>
