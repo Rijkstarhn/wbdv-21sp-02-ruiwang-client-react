@@ -5,6 +5,7 @@ import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
 import widgetActions from "../../../actions/widget-actions";
 import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = ({myWidgets = [], createWidgetForTopic, updateWidget, deleteWidget, findWidgetsForTopic}) => {
     const {topicId, wid} = useParams();
@@ -48,6 +49,14 @@ const WidgetList = ({myWidgets = [], createWidgetForTopic, updateWidget, deleteW
                         {
                             widget.type === "LIST" &&
                             <ListWidget
+                                widget={widget}
+                                updateWidget={updateWidget}
+                                deleteWidget={deleteWidget}
+                            />
+                        }
+                        {
+                            widget.type === "IMAGE" &&
+                            <ImageWidget
                                 widget={widget}
                                 updateWidget={updateWidget}
                                 deleteWidget={deleteWidget}
