@@ -19,7 +19,7 @@ const WidgetList = ({myWidgets = [], createWidgetForTopic, updateWidget, deleteW
             <br/>
             <div className = 'row'>
                 <div className = 'col'>
-                    <h1>Widget Lists</h1>
+                    <h1 className = 'editIconColor'>Widget Lists</h1>
                 </div>
                 <div className = 'col'>
                     <i onClick={() => createWidgetForTopic(topicId, {title: 'Not important what here is'})}
