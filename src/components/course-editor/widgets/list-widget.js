@@ -21,7 +21,6 @@ const ListWidget = ({updateWidget, deleteWidget, widget}) => {
                             checked = {cachedWidget.orderedList}
                             type = "checkbox"/> Ordered
                         <i onClick={() => {
-                            console.log(cachedWidget)
                             updateWidget(cachedWidget)
                             setEditingStatus(false);
                         }} className="fas fa-check float-right"></i>
