@@ -49,9 +49,9 @@ const ListWidget = ({updateWidget, deleteWidget, widget}) => {
                             <>
                                 <ul>
                                     {
-                                        cachedWidget.text.split('\n').map(item => <li>
-                                            {item}
-                                        </li>)
+                                        cachedWidget.text.split('\n').map((item, index) =>
+                                            <li key ={index}> {item} </li>
+                                        )
                                     }
                                 </ul>
                             </>
@@ -61,7 +61,7 @@ const ListWidget = ({updateWidget, deleteWidget, widget}) => {
                             <>
                                 <ol>
                                     {
-                                        cachedWidget.text.split('\n').map(item => <li>
+                                        cachedWidget.text.split('\n').map((item, index) => <li key = {item}>
                                             {item}
                                         </li>)
                                     }
