@@ -38,6 +38,18 @@ const ListWidget = ({updateWidget, deleteWidget, widget}) => {
                                   className='form-control'>
 
                         </textarea>
+                        <select value={cachedWidget.type} className="form-control"
+                                onChange = {(event) => setCachedWidget({
+                                    ...cachedWidget, type: event.target.value
+                                })}>
+                            <option value='HEADING'>Heading</option>
+                            <option value='PARAGRAPH'>Paragraph</option>
+                            <option value='VIDEO'>Video</option>
+                            <option value='IMAGE'>Image</option>
+                            <option value='LINK'>Link</option>
+                            <option value='LIST'>List</option>
+                            <option value='HTML'>HTML</option>
+                        </select>
                     </>
             }
             {
