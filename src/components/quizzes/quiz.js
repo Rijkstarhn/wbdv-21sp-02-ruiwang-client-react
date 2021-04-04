@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import Question from "./questions/question";
+import questionService from '../../services/question-service'
 
 const Quiz = () => {
 
@@ -8,9 +9,7 @@ const Quiz = () => {
     const [questions, setQuestions] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:4000/api/quizzes/${quizId}/questions`)
-            .then(res => res.json())
-            .then(questions => setQuestions(questions))
+        questionService.findQuestionsForQuiz(quizId).then(questions => setQuestions(questions))
     }, [])
 
     return (
