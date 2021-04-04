@@ -16,8 +16,8 @@ const QuizzesList = ({findQuizzesForCourse}) => {
             <h3 className = 'form-group editIconColor'>Quizzes</h3>
             <ul className = 'list-group'>
                 {
-                    quizzes.map(quiz =>
-                        <li className = 'list-group-item'>
+                    quizzes.map((quiz, index) =>
+                        <li className = 'list-group-item' key = {index}>
                             <Link to ={`/courses/${courseId}/quizzes/${quiz._id}`}>
                                 {quiz.title}
                             </Link>
