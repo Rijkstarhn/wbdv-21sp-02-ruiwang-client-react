@@ -37,6 +37,11 @@ const CourseRow = ({deleteCourse, updateCourse, course, title, ownedBy, lastModi
                 {lastModified}
             </td>
             <td>
+                <Link className="d-none d-lg-table-cell" to={`/courses/${course._id}/quizzes`}>
+                    quizzes
+                </Link>
+            </td>
+            <td>
                 {!editing && <i onClick={() => setEditing(true)} className="editIconColor fas fa-edit"></i>}
                 {editing && <i onClick={() => saveTitle()} className="checkIconColor fas fa-check"></i>}
                 {editing && <i onClick={() =>
