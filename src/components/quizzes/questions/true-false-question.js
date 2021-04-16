@@ -33,16 +33,16 @@ const TrueFalseQuestion = ({question}) => {
                 </li>
             </ul>
             <h6>Your Answer: {userAnswer}</h6>
-            <button onClick = {() => {
-                if (userAnswer === question.correct) {
-                    setIsCorrect(true)
-                } else {
-                    setIsCorrect(false)
-                }
-            }}
-                    className = 'btn btn-primary'>
-                Grade
-            </button>
+            {/*<button onClick = {() => {*/}
+            {/*    if (userAnswer === question.correct) {*/}
+            {/*        setIsCorrect(true)*/}
+            {/*    } else {*/}
+            {/*        setIsCorrect(false)*/}
+            {/*    }*/}
+            {/*}}*/}
+            {/*        className = 'btn btn-primary'>*/}
+            {/*    Grade*/}
+            {/*</button>*/}
         </div>
     )
 }

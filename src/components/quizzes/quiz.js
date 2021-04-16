@@ -12,9 +12,15 @@ const Quiz = () => {
         questionService.findQuestionsForQuiz(quizId).then(questions => setQuestions(questions))
     }, [])
 
+    const submitQuiz = () => {
+        // post questions to server
+    }
+
     return (
         <div className = 'container-fluid'>
             <h3 className = 'form-group editIconColor'>Quiz {quizId}</h3>
+            <button className = "btn btn-primary" onClick = {() => submitQuiz()}>Submit</button>
+            <p></p>
             <ul className = 'list-group'>
                 {
                     questions.map((question, index) =>
