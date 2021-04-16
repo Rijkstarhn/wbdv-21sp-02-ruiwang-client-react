@@ -1,9 +1,15 @@
 import React, {useState} from 'react'
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question, index, userAttempts, setUserAttempts}) => {
 
     const [userAnswer, setUserAnswer] = useState('')
     const [isCorrect, setIsCorrect] = useState(null)
+
+    const updateUserAnswer = (answer) => {
+        setUserAnswer(answer)
+        userAttempts[index] = answer;
+        setUserAttempts(userAttempts);
+    }
 
     return (
         <div>
@@ -16,7 +22,7 @@ const TrueFalseQuestion = ({question}) => {
                         className = {`list-group-item 
                             ${isCorrect !== null && question.correct === 'true' && 'list-group-item-success'}
                             ${isCorrect !== null && userAnswer === 'true' && userAnswer !== question.correct && 'list-group-item-danger'}`} >
-                        <input type='radio' onClick={() => setUserAnswer('true')} name={question._id}/> TRUE
+                        <input type='radio' onClick={() => updateUserAnswer('true')} name={question._id}/> TRUE
                         {isCorrect !== null && question.correct === 'true' && <i className="fas fa-check checkIconColor float-right"></i>}
                         {isCorrect !== null && userAnswer !== question.correct && userAnswer === 'true' && <i className="fas fa-times crossIconColor float-right"></i>}
                     </label>
@@ -26,7 +32,7 @@ const TrueFalseQuestion = ({question}) => {
                         className = {`list-group-item 
                             ${isCorrect !== null && question.correct === 'false' && 'list-group-item-success'}
                             ${isCorrect !== null && userAnswer === 'false' && userAnswer !== question.correct && 'list-group-item-danger'}`} >
-                        <input type='radio' onClick={() => setUserAnswer('false')} name={question._id}/> FALSE
+                        <input type='radio' onClick={() => updateUserAnswer('false')} name={question._id}/> FALSE
                         {isCorrect !== null && question.correct === 'false' && <i className="fas fa-check checkIconColor float-right"></i>}
                         {isCorrect !== null && userAnswer !== question.correct && userAnswer === 'false' && <i className="fas fa-times crossIconColor float-right"></i>}
                     </label>

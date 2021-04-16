@@ -1,9 +1,15 @@
 import React, {useState} from 'react';
 
-const MultipleChoiceQuestion = ({question}) => {
+const MultipleChoiceQuestion = ({question, index, userAttempts, setUserAttempts}) => {
 
     const [userAnswer, setUserAnswer] = useState('')
     const [isCorrect, setIsCorrect] = useState(null)
+
+    const updateUserAnswer = (answer) => {
+        setUserAnswer(answer)
+        userAttempts[index] = answer;
+        setUserAttempts(userAttempts);
+    }
 
     return (
         <div>
@@ -18,7 +24,7 @@ const MultipleChoiceQuestion = ({question}) => {
                                 className = {`list-group-item 
                                     ${isCorrect !== null && question.correct === choice && 'list-group-item-success'}
                                     ${isCorrect !== null && userAnswer === choice && userAnswer !== question.correct && 'list-group-item-danger'}`} >
-                                <input type='radio' onClick={() => setUserAnswer(choice)} name={question._id}/> {choice}
+                                <input type='radio' onClick={() => updateUserAnswer(choice)} name={question._id}/> {choice}
                                 {isCorrect !== null && question.correct === choice && <i className="fas fa-check checkIconColor float-right"></i>}
                                 {isCorrect !== null && userAnswer !== question.correct && userAnswer === choice && <i className="fas fa-times crossIconColor float-right"></i>}
                             </label>
