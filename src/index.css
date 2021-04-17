@@ -106,3 +106,7 @@ code {
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */
 }
+
+.quizButtonMargin {
+  margin-left: 20px;
+}

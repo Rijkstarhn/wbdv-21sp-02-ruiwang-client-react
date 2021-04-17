@@ -8,6 +8,7 @@ import courseService from "../services/course-service";
 import CourseNavBar from "./course-navbar";
 import QuizzesList from "./quizzes/quizzes-list";
 import Quiz from "./quizzes/quiz";
+import Attempt from "./quizzes/attempt";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 
@@ -88,6 +89,9 @@ export default class CourseManager extends React.Component {
                 </Route>
                 <Route path = '/courses/:courseId/quizzes/:quizId' exact = {true}>
                     <Quiz />
+                </Route>
+                <Route path = '/courses/:courseId/quizzes/:quizId/attempts' exact = {true}>
+                    <Attempt />
                 </Route>
             </div>
         )
