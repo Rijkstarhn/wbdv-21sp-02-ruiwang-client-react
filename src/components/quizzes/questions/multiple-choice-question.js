@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-const MultipleChoiceQuestion = ({question, index, userAttempts, setUserAttempts}) => {
+const MultipleChoiceQuestion = ({question, index, isCorrect, userAttempts, setUserAttempts}) => {
 
     const [userAnswer, setUserAnswer] = useState('')
-    const [isCorrect, setIsCorrect] = useState(null)
+    // const [isCorrect, setIsCorrect] = useState(null)
 
     const updateUserAnswer = (answer) => {
         setUserAnswer(answer)

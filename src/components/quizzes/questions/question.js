@@ -2,7 +2,7 @@ import React from "react";
 import TrueFalseQuestion from "./true-false-question";
 import MultipleChoiceQuestion from "./multiple-choice-question";
 
-const Question = ({question, index, userAttempts, setUserAttempts}) => {
+const Question = ({question, index, isCorrect, userAttempts, setUserAttempts}) => {
     return(
         <div>
             {
@@ -10,6 +10,7 @@ const Question = ({question, index, userAttempts, setUserAttempts}) => {
                 <TrueFalseQuestion
                     question={question}
                     index = {index}
+                    isCorrect ={isCorrect}
                     userAttempts = {userAttempts}
                     setUserAttempts = {setUserAttempts}/>
             }
@@ -18,6 +19,7 @@ const Question = ({question, index, userAttempts, setUserAttempts}) => {
                 <MultipleChoiceQuestion
                     question = {question}
                     index = {index}
+                    isCorrect ={isCorrect}
                     userAttempts = {userAttempts}
                     setUserAttempts = {setUserAttempts}/>
             }
