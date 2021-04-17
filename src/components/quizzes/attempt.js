@@ -25,13 +25,17 @@ const Attempt = () => {
                         <li className = 'list-group-item' key = {index}>
                             Attempt: {index + 1}
                             <br/>
-                            Score:{attempt.score}
+                                Score:{attempt.score}
                             <br/>
-                            Your answers: {attempt.answers.map((answer, index) => (
+                            Your answers:
+                            {
+                                attempt.answers.length === 0 && <h6>You didn't submit any answer in this attempt.</h6>
+                            }
+                            {attempt.answers.map((answer, index) => (
                                 <li className = 'list-group-item' key = {index}>
                                     No.{index+1}: {answer}
                                 </li>
-                        ))}
+                            ))}
                         </li>
                     )
                 }
