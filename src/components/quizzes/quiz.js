@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import Question from "./questions/question";
-import questionService from '../../services/question-service'
+import questionService from '../../services/question-service';
+import attemptService from '../../services/attempt-service';
 
 const Quiz = () => {
 
-    const {quizId} = useParams()
+    const {courseId, quizId} = useParams()
     const [questions, setQuestions] = useState([])
     const [userAttempts, setUserAttempts] = useState([])
     const [score, setScore] = useState('     ')
@@ -27,7 +28,7 @@ const Quiz = () => {
         for (let i = 0; i < questions.length; i++) {
             isCorrectFromAttempt[i] = result.answers[i] === questions[i].correct;
         }
-        console.log('isCorrect:', isCorrectFromAttempt);
+        // console.log('isCorrect:', isCorrectFromAttempt);
         setIsCorrect(isCorrectFromAttempt)
     }
 
@@ -36,14 +37,7 @@ const Quiz = () => {
         let attemptsAndQuestions = {};
         attemptsAndQuestions.attempts = userAttempts;
         attemptsAndQuestions.questions = questions;
-        fetch(`http://localhost:4000/api/quizzes/${quizId}/attempts`, {
-                method: 'POST',
-                body: JSON.stringify(attemptsAndQuestions),
-                headers: {
-                    'content-type': 'application/json'
-                }
-            }
-        ).then(response => response.json())
+        attemptService.postAttemptsByQuizId(quizId, attemptsAndQuestions)
             .then(result => processResult(result))
     }
 
@@ -59,6 +53,7 @@ const Quiz = () => {
                 </div>
             </div>
             <button className = "btn btn-primary" onClick = {() => submitAttempt()}>Submit</button>
+            <Link to = {`/courses/${courseId}/quizzes/${quizId}/attempts`}  className = "btn btn-primary quizButtonMargin">View History</Link>
             <p></p>
             <ul className = 'list-group'>
                 {
