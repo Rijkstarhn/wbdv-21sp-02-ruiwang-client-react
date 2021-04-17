@@ -4,7 +4,7 @@ import attemptService from '../../services/attempt-service';
 
 const Attempt = () => {
 
-    const {quizId} = useParams()
+    const {courseId, quizId} = useParams()
     const [attempts, setAttempts] = useState([]);
 
     useEffect(() => {
@@ -14,8 +14,11 @@ const Attempt = () => {
 
     return (
         <div className = 'container-fluid'>
-
             <h1 className = 'editIconColor'>Attempt History</h1>
+            <Link to ={`/courses/${courseId}/quizzes/${quizId}`} className="btn btn-primary ">
+                Back
+            </Link>
+            <p></p>
             <ol className = 'list-group'>
                 {
                     attempts.map((attempt, index) =>

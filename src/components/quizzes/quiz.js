@@ -54,6 +54,7 @@ const Quiz = () => {
             </div>
             <button className = "btn btn-primary" onClick = {() => submitAttempt()}>Submit</button>
             <Link to = {`/courses/${courseId}/quizzes/${quizId}/attempts`}  className = "btn btn-primary quizButtonMargin">View History</Link>
+            <Link to = {`/courses/${courseId}/quizzes`}  className = "btn btn-primary quizButtonMargin">Back</Link>
             <p></p>
             <ul className = 'list-group'>
                 {
